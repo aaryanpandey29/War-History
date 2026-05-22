@@ -1,11 +1,16 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
+from .models import Articles
+from django.shortcuts import render, get_object_or_404
+from django.views import generic
 
 
-def battles(request):
-    return HttpResponse("Hello, world. You're at the battles index")
+class IndexView(generic.ListView):
+    template_name = "articles/index.html"
+    model = Articles
+    context_object_name = "latest_articles"
 
 
-def detail(request, article_id):
-    return HttpResponse(
-        "You are looking at the detailed battle page of %s" % article_id
-    )
+class DetailView(generic.DetailView):
+    template_name = "articles/detail.html"
+    context_object_name = "article"
+    model = Articles
