@@ -11,12 +11,12 @@
     <ul>
       {% for battle in latest_articles %}
       <li>
-        <a href="{% url 'polls:detail' battle.id %}">{{ battle.title }}</a>
+        <a href="/articles/{{ battle.id }}">{{ battle.Name }}</a>
       </li>
       {% endfor %}
     </ul>
     {% else %}
-    <p>No polls are available.</p>
+    <p>No articles are available.</p>
     {% endif %}
   </body>
 </html>
